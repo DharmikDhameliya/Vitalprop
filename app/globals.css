@@ -1,0 +1,429 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 100% 98%;
+    --foreground: 210 100% 15%;
+    --card: 240 50% 95%;
+    --card-foreground: 210 100% 15%;
+    --popover: 240 50% 95%;
+    --popover-foreground: 210 100% 15%;
+    --primary: 200 100% 40%;
+    --primary-foreground: 240 100% 98%;
+    --secondary: 220 30% 90%;
+    --secondary-foreground: 210 100% 15%;
+    --muted: 220 30% 88%;
+    --muted-foreground: 220 50% 40%;
+    --accent: 200 100% 40%;
+    --accent-foreground: 240 100% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 200 50% 80%;
+    --input: 200 50% 85%;
+    --ring: 200 100% 40%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 8 12% 8%;
+    --foreground: 200 100% 95%;
+    --card: 210 15% 12%;
+    --card-foreground: 200 100% 95%;
+    --popover: 210 15% 12%;
+    --popover-foreground: 200 100% 95%;
+    --primary: 180 100% 50%;
+    --primary-foreground: 210 15% 8%;
+    --secondary: 210 20% 18%;
+    --secondary-foreground: 200 100% 95%;
+    --muted: 210 20% 15%;
+    --muted-foreground: 200 20% 70%;
+    --accent: 180 100% 50%;
+    --accent-foreground: 210 15% 8%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 30% 25%;
+    --input: 210 30% 20%;
+    --ring: 180 100% 50%;
+  }
+
+  .light {
+    --background: 240 100% 98%;
+    --foreground: 210 100% 15%;
+    --card: 240 50% 95%;
+    --card-foreground: 210 100% 15%;
+    --popover: 240 50% 95%;
+    --popover-foreground: 210 100% 15%;
+    --primary: 200 100% 40%;
+    --primary-foreground: 240 100% 98%;
+    --secondary: 220 30% 90%;
+    --secondary-foreground: 210 100% 15%;
+    --muted: 220 30% 88%;
+    --muted-foreground: 220 50% 40%;
+    --accent: 200 100% 40%;
+    --accent-foreground: 240 100% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 200 50% 80%;
+    --input: 200 50% 85%;
+    --ring: 200 100% 40%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border transition-colors duration-300;
+  }
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 600;
+  }
+
+  /* Smooth background gradient that transitions between themes */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--card)) 50%, hsl(var(--background)) 100%);
+    transition: background 0.5s ease-in-out;
+  }
+}
+
+/* Theme transition animations */
+.theme-transition * {
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out !important;
+}
+
+/* Sci-fi glow effects - theme aware */
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3), 0 0 40px rgba(0, 255, 255, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.light .glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 150, 200, 0.4), 0 0 40px rgba(0, 150, 200, 0.2);
+}
+
+.glow-blue {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3);
+  transition: text-shadow 0.3s ease-in-out;
+}
+
+.light .text-glow {
+  text-shadow: 0 0 10px rgba(0, 150, 200, 0.6), 0 0 20px rgba(0, 150, 200, 0.4);
+}
+
+.neon-border {
+  border: 1px solid rgba(0, 255, 255, 0.5);
+  box-shadow: 0 0 5px rgba(0, 255, 255, 0.3), inset 0 0 5px rgba(0, 255, 255, 0.1);
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.light .neon-border {
+  border: 1px solid rgba(0, 150, 200, 0.6);
+  box-shadow: 0 0 5px rgba(0, 150, 200, 0.4), inset 0 0 5px rgba(0, 150, 200, 0.2);
+}
+
+.neon-border:hover {
+  border-color: rgba(0, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5), inset 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+.light .neon-border:hover {
+  border-color: rgba(0, 150, 200, 0.9);
+  box-shadow: 0 0 15px rgba(0, 150, 200, 0.6), inset 0 0 10px rgba(0, 150, 200, 0.3);
+}
+
+/* Futuristic grid background - theme aware */
+.grid-bg {
+  background-image: linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: grid-move 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.light .grid-bg {
+  background-image: linear-gradient(rgba(0, 150, 200, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 150, 200, 0.15) 1px, transparent 1px);
+}
+
+@keyframes grid-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+/* Holographic effect - theme aware */
+.holographic {
+  background: linear-gradient(
+    45deg,
+    rgba(0, 255, 255, 0.1) 0%,
+    rgba(59, 130, 246, 0.1) 25%,
+    rgba(147, 51, 234, 0.1) 50%,
+    rgba(59, 130, 246, 0.1) 75%,
+    rgba(0, 255, 255, 0.1) 100%
+  );
+  background-size: 400% 400%;
+  animation: holographic-shift 4s ease-in-out infinite;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.light .holographic {
+  background: linear-gradient(
+    45deg,
+    rgba(0, 150, 200, 0.15) 0%,
+    rgba(0, 100, 200, 0.15) 25%,
+    rgba(100, 50, 200, 0.15) 50%,
+    rgba(0, 100, 200, 0.15) 75%,
+    rgba(0, 150, 200, 0.15) 100%
+  );
+}
+
+@keyframes holographic-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* San Francisco font classes with sci-fi styling */
+.font-sf {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.font-sf-display {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.font-sf-text {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* Custom scrollbar with sci-fi styling - theme aware */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+  transition: background 0.3s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(0, 255, 255, 0.6), rgba(59, 130, 246, 0.6));
+  border-radius: 4px;
+  transition: background 0.3s ease-in-out;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(0, 150, 200, 0.7), rgba(0, 100, 180, 0.7));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(0, 255, 255, 0.8), rgba(59, 130, 246, 0.8));
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(0, 150, 200, 0.9), rgba(0, 100, 180, 0.9));
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Typography improvements with sci-fi styling */
+.font-light {
+  font-weight: 700;
+}
+
+.font-medium {
+  font-weight: 800;
+}
+
+.font-semibold {
+  font-weight: 900;
+}
+
+/* Large headings with sci-fi glow */
+h1,
+h2,
+.text-5xl,
+.text-6xl,
+.text-7xl {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  transition: text-shadow 0.3s ease-in-out;
+}
+
+.light h1,
+.light h2,
+.light .text-5xl,
+.light .text-6xl,
+.light .text-7xl {
+  text-shadow: 0 0 20px rgba(0, 150, 200, 0.4);
+}
+
+/* Body text with enhanced readability */
+p,
+.text-base,
+.text-lg,
+.text-xl {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Sci-fi button effects - theme aware */
+.btn-sci-fi {
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(59, 130, 246, 0.2));
+  border: 1px solid rgba(0, 255, 255, 0.5);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3), inset 0 0 10px rgba(0, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.light .btn-sci-fi {
+  background: linear-gradient(135deg, rgba(0, 150, 200, 0.15), rgba(0, 100, 180, 0.15));
+  border: 1px solid rgba(0, 150, 200, 0.6);
+  box-shadow: 0 0 10px rgba(0, 150, 200, 0.4), inset 0 0 10px rgba(0, 150, 200, 0.2);
+}
+
+.btn-sci-fi:hover {
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.3), rgba(59, 130, 246, 0.3));
+  border-color: rgba(0, 255, 255, 0.8);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), inset 0 0 15px rgba(0, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.light .btn-sci-fi:hover {
+  background: linear-gradient(135deg, rgba(0, 150, 200, 0.25), rgba(0, 100, 180, 0.25));
+  border-color: rgba(0, 150, 200, 0.9);
+  box-shadow: 0 0 20px rgba(0, 150, 200, 0.6), inset 0 0 15px rgba(0, 150, 200, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Particle animation background - theme aware */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(0, 255, 255, 0.6);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+  transition: background 0.3s ease-in-out;
+}
+
+.light .particle {
+  background: rgba(0, 120, 180, 0.7);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Animation utilities */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Focus styles for accessibility with sci-fi theme */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid rgba(0, 255, 255, 0.8);
+  outline-offset: 2px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  transition: outline 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.light button:focus-visible,
+.light input:focus-visible,
+.light textarea:focus-visible,
+.light select:focus-visible {
+  outline: 2px solid rgba(0, 150, 200, 0.9);
+  box-shadow: 0 0 10px rgba(0, 150, 200, 0.4);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .text-gray-400 {
+    @apply text-gray-300;
+  }
+  .text-gray-300 {
+    @apply text-gray-200;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
