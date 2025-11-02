@@ -46,7 +46,7 @@ export default function Navigation() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center">
-              <span className="text-2xl font-sf-display font-bold text-cyan-400">Vital Prop</span>
+              <span className="text-2xl font-orbitron font-extrabold brand-text">Vital Prop</span>
             </Link>
           </div>
         </div>
@@ -68,7 +68,7 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center">
-            <span className="text-2xl font-sf-display font-bold text-cyan-400 hover:text-cyan-300 transition-colors duration-300 text-glow">
+            <span className="text-2xl font-orbitron font-extrabold brand-text hover:opacity-80 transition-all duration-300">
               Vital Prop
             </span>
           </Link>
@@ -79,7 +79,7 @@ export default function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`relative px-3 py-2 text-sm font-sf-text font-semibold transition-all duration-300 group ${
+                className={`relative px-3 py-2 text-sm font-orbitron font-bold transition-all duration-300 group ${
                   pathname === item.href ? "text-cyan-400" : "text-muted-foreground hover:text-cyan-300"
                 }`}
               >
@@ -171,7 +171,7 @@ export default function Navigation() {
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className={`block px-3 py-2 text-base font-semibold transition-colors duration-300 rounded-md ${
+                  className={`block px-3 py-2 text-base font-orbitron font-bold transition-colors duration-300 rounded-md ${
                     pathname === item.href
                       ? "text-cyan-400 bg-cyan-500/10"
                       : "text-muted-foreground hover:text-cyan-300 hover:bg-cyan-500/5"

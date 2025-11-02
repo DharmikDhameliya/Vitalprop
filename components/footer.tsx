@@ -46,7 +46,7 @@ export default function Footer() {
             transition={{ duration: 0.6 }}
           >
             <Link href="/" className="inline-block mb-4">
-              <span className="text-3xl font-sf-display font-bold text-cyan-400 text-glow">Vital Prop</span>
+              <span className="text-3xl font-orbitron font-bold brand-text">Vital Prop</span>
             </Link>
             <p className="text-muted-foreground font-sf-text font-semibold mb-6 max-w-md leading-relaxed">
               Empowering businesses with intelligent AI automation solutions. Streamline operations, capture leads, and

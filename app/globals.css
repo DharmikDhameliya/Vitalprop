@@ -96,9 +96,37 @@
   }
 }
 
+/* Added Orbitron font family for retro futuristic branding */
+.font-orbitron {
+  font-family: "Orbitron", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  letter-spacing: 0.05em;
+}
+
+/* Brand text color - cyan in dark mode, darker blue in light mode */
+.brand-text {
+  color: rgb(34, 211, 238); /* cyan-400 for dark mode */
+  text-shadow: 0 0 20px rgba(34, 211, 238, 0.5), 0 0 40px rgba(34, 211, 238, 0.3);
+  transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+.light .brand-text {
+  color: rgb(8, 47, 73); /* dark blue for light mode */
+  text-shadow: 0 0 15px rgba(0, 100, 150, 0.3), 0 0 30px rgba(0, 100, 150, 0.2);
+}
+
 /* Theme transition animations */
 .theme-transition * {
   transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out !important;
+}
+
+/* Smooth background gradient that transitions between themes */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--card)) 50%, hsl(var(--background)) 100%);
+  transition: background 0.5s ease-in-out;
 }
 
 /* Sci-fi glow effects - theme aware */
